@@ -1,4 +1,4 @@
-.context-menu {
+.context-menu, .factory-context-menu {
   display: none;
   position: absolute;
   z-index: 222;

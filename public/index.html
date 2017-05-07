@@ -11,9 +11,9 @@
     <div class="container">
       <ul id="tree">
         <li id="root">
-          <span id="root-button"><button title="create factory">ROOT</button></span>
+          <span id="root-button"><button id="root-button" title="create factory">ROOT</button></span>
           <ul id="factories">
-            <li>Thing</li>
+            <li class="factory">Thing</li>
           </ul>
         </li>
       </ul>
@@ -22,13 +22,23 @@
     <!-- CONTEXT MENU BEGIN-->
     <section class="context-menu">
       <div id="factory-title">Create a new Factory</div>
-      <button id="close-button" onclick="Modal.close()">&#10006;</button>
+      <button class="close-button">&#10006;</button>
       <nav id="context-menu">
         <div class="context-input" id="Factory Name"><input id="factory-name" placeholder="Jeff Goldbloom" type="text"></input></div>
         <div class="context-input" id="# of Children"><input id="num-children" placeholder="5" type="number"></input></div>
         <button id="create-factory" type="button" onclick="createFactory($('#factory-name'), $('#num-children'))">Add Factory</button>
       </nav>
     </section>
+
+    <section class="factory-context-menu">
+      <div id="factory-title">Josiah</div>
+      <button class="close-button">&#10006;</button>
+      <nav id="context-menu">
+        <div class="context-input" id="Factory Name"><input id="factory-name" placeholder="Jeff Goldbloom" type="text"></input></div>
+        <div class="context-input" id="# of Children"><input id="num-children" placeholder="5" type="number"></input></div>
+        <button id="create-factory" type="button" onclick="createFactory($('#factory-name'), $('#num-children'))">Add Factory</button>
+      </nav>
+    </section>    
     <!-- CONTEXT MENU END -->
 
     <script src="/js/main.js"></script>

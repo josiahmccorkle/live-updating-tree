@@ -1,7 +1,8 @@
 (function() {
 
   "use strict";
-  var menu = $('.context-menu');
+  var rootMenu = $('.context-menu');
+  var factoryMenu = $('.factory-context-menu');
   var menuState = 0;
   var active = "context-menu--active";
 
@@ -9,27 +10,43 @@
     clickListener();
   }
 
-  function toggleMenuOn() {
+  function toggleMenuOn(menu) {
     if ( menuState !== 1 ) {
       menuState = 1;
       menu.addClass(active);
     } 
   }
 
+  function toggleFactoryMenuOn() {
+
+  }
+
   function toggleMenuOff() {
     if ( menuState !== 0 ) {
       menuState = 0;
-      menu.removeClass(active);
+      rootMenu.removeClass(active);
+      factoryMenu.removeClass(active);
     } 
   }
 
   function clickListener() {
     $("#root").on( "click", function(e) {
+      console.log(e.target);
       e.preventDefault();
-      toggleMenuOn();
-      positionMenu(e);
+      if(e.target.id === 'root-button') {
+        toggleMenuOn(rootMenu);
+        positionMenu(e, rootMenu);
+      } else if(e.target.className === 'factory') {
+        toggleMenuOn(factoryMenu);
+        positionMenu(e, factoryMenu);
+      }
+
     });
   }
+
+  $('.close-button').click((e)=>{
+    toggleMenuOff();
+  });
 
   init();
 
@@ -59,7 +76,7 @@ function getPosition(e) {
   }
 }
 
-function positionMenu(e) {
+function positionMenu(e, menu) {
   menuPosition = getPosition(e);
   menuPositionX = menuPosition.x + "px";
   menuPositionY = menuPosition.y + "px";
@@ -87,5 +104,5 @@ let createFactory =(name, num)=>{
 }
 
 socket.on('create factory', function(factory){
-  $('#factories').append($('<li>').text(factory.name));
+  $('#factories').append($('<li class="factory">').text(factory.name));
 });
