@@ -1,0 +1,24 @@
+{
+  "name": "live-updating-tree",
+  "version": "1.0.0",
+  "description": "A live-updating tree code challenge for Passport.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/josiahmccorkle/live-updating-tree.git"
+  },
+  "author": "Josiah McCorkle",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/josiahmccorkle/live-updating-tree/issues"
+  },
+  "homepage": "https://github.com/josiahmccorkle/live-updating-tree#readme",
+  "dependencies": {
+    "express": "^4.15.2",
+    "mongodb": "^2.2.26",
+    "socket.io": "^1.7.3"
+  }
+}

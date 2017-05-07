@@ -1,0 +1,90 @@
+* { 
+  margin: 0; 
+  padding: 0; box-sizing: border-box; 
+  list-style-type: none; 
+}
+
+ body { 
+   margin: 30px;
+   font: 13px Helvetica, Arial;
+   background-color: #fafafa; 
+ }
+
+ .container {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
+}
+
+#tree {
+  margin:0 auto;
+  position: absolute;
+  left: 50%;
+}
+
+#root-button > button {
+  font-size: 14px;
+  padding: 10px 20px 10px 20px;
+  border-radius: 3px;
+  background-color: #cacaca;
+  border: none;
+}
+
+#root-button > button:hover {
+  background-color: #666;
+  color: #fff
+}
+
+.container, .container ul, .container li {
+     position: relative;
+     padding-top: 13px;
+}
+
+.container ul {
+    list-style: none;
+    padding-left: 32px;
+}
+
+.container li::before, .container li::after {
+    content: "";
+    position: absolute;
+    left: -12px;
+}
+
+.container li::before {
+    border-top: 1px solid #000;
+    top: 20px;
+    width: 8px;
+    height: 0;
+}
+
+.container li::after {
+    border-left: 1px solid #000;
+    height: 100%;
+    width: 0px;
+    top: 2px;
+    padding-top: 10px;
+}
+
+.container ul > li:last-child::after {
+    height: 8px;
+}

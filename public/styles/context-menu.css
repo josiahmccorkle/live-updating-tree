@@ -1,0 +1,31 @@
+.context-menu {
+  display: none;
+  position: absolute;
+  z-index: 222;
+  width: auto;
+  height: auto;
+  margin: 0px 0px 20px 10px;
+  float: right;
+  border: solid 1px #dfdfdf;
+  box-shadow: 1px 1px 2px #cfcfcf;
+  padding: 10px;
+  border-radius: 3px;
+  background-color: inherit;
+}
+
+.context-menu--active {
+  display: block;
+}
+
+#factory-title {
+  float: left;
+  margin-right: 20px;
+}
+
+nav#context-menu {
+  padding-top: 10px;
+}
+
+.context-input {
+  padding-bottom: 10px;
+}

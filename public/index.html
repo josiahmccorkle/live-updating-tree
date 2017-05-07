@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Live Updating Tree</title>
+    <link rel="stylesheet" href="/styles/app.css">
+    <link rel="stylesheet" href="/styles/context-menu.css">
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <ul id="tree">
+        <li id="root">
+          <span id="root-button"><button title="create factory">ROOT</button></span>
+          <ul id="factories">
+            <li>Thing</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <!-- CONTEXT MENU BEGIN-->
+    <section class="context-menu">
+      <div id="factory-title">Create a new Factory</div>
+      <button id="close-button" onclick="Modal.close()">&#10006;</button>
+      <nav id="context-menu">
+        <div class="context-input" id="Factory Name"><input id="factory-name" placeholder="Jeff Goldbloom" type="text"></input></div>
+        <div class="context-input" id="# of Children"><input id="num-children" placeholder="5" type="number"></input></div>
+        <button id="create-factory" type="button" onclick="createFactory($('#factory-name'), $('#num-children'))">Add Factory</button>
+      </nav>
+    </section>
+    <!-- CONTEXT MENU END -->
+
+    <script src="/js/main.js"></script>
+  </body>
+</html>
