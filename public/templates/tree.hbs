@@ -1,0 +1,13 @@
+{{#each factoryList}}
+  <li class="factory" id="{{_id}}">
+    <div class="factory-name" >{{name}}&nbsp;&nbsp;{{lowerRange}}:{{upperRange}}</div>
+    <input type="hidden" node-name="{{name}}" factory-id="{{_id}}" upper-range="{{upperRange}}" lower-range="{{lowerRange}}" num-of-nodes="{{numOfNodes}}">
+    <ul>      
+      {{#each childNodes}}
+        <li class="child-node">{{this}}</li>
+      {{/each}}
+    </ul>  
+  </li>
+{{/each}}
+
+

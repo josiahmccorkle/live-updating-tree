@@ -36,7 +36,7 @@
 }
 
 #tree {
-  margin:0 auto;
+  margin: 20px 20px 80px 20px;
   position: absolute;
   left: 50%;
 }
@@ -50,13 +50,13 @@
 }
 
 #root-button > button:hover {
-  background-color: #666;
-  color: #fff
+  background-color: #2098D1;
+  color: #fff;
 }
 
 .container, .container ul, .container li {
      position: relative;
-     padding-top: 13px;
+     padding-top: 10px;
 }
 
 .container ul {
@@ -73,7 +73,7 @@
 .container li::before {
     border-top: 1px solid #000;
     top: 20px;
-    width: 8px;
+    width: 12px;
     height: 0;
 }
 
@@ -81,10 +81,30 @@
     border-left: 1px solid #000;
     height: 100%;
     width: 0px;
-    top: 2px;
-    padding-top: 10px;
+    top: -10px;
+    /* padding-top: 5px; */
 }
 
 .container ul > li:last-child::after {
-    height: 8px;
+    height: 31px;
+}
+
+.factory {
+  font-weight:bold;
+}
+
+.factory-name {
+  padding: 5px;
+  text-align: center;
+  border: 1px solid #666;
+  border-radius: 3px;
+}
+.factory-name:hover {
+  background-color: #2098D1;
+  color: #fff;
+  border-radius: 2px;
+}
+.child-node{
+  font-weight:normal;
+  padding-left: 5px;
 }

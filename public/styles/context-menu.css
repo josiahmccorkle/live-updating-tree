@@ -12,20 +12,118 @@
   border-radius: 3px;
   background-color: inherit;
 }
-
-.context-menu--active {
+#context-menu > ul {
+  margin-top: 30px;
+}
+.context-menu--active{
   display: block;
 }
 
-#factory-title {
-  float: left;
-  margin-right: 20px;
+.factory-title {
+    float: left;
+    margin-right: 20px;
+    margin-top: 5px;
+    font-size: 20px;
+    margin-bottom: 10px;
+
 }
 
 nav#context-menu {
   padding-top: 10px;
 }
 
+.context-label {
+  padding-top: 15px;
+  padding-bottom: 5px;
+}
+
 .context-input {
-  padding-bottom: 10px;
+    padding-bottom: 10px;
+    width: 150px;
+    margin-bottom: 10px;
+    border-radius: 2px;
+    border: 1px solid #DCD7D7;
+    font-size:12px;
+}
+
+
+
+button.close-button {
+    float: right;
+    font-size: 21px;
+    line-height: 1;
+    color: #000;
+    text-shadow: 0 1px 0 #fff;
+    opacity: .4;
+    margin-top: 6px;
+    -webkit-appearance: none;
+    padding: 0;
+    cursor: pointer;
+    background: 0 0;
+    border: 0;
+}
+
+button.close-button:hover {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+    filter: alpha(opacity=50);
+    opacity: .5;
+}
+
+#divider {
+  width: 100%;
+  text-align: center;
+  color: #443e3e;
+  border-top: 1px solid #888686;
+  margin-top: 6px;
+  padding-top: 10px;
+}
+
+button#create-factory {
+  padding: 8px;
+  border-radius: 2px;
+  border: none;
+  color: #fff;
+  background-color: #5bc0de;
+  border-color: #46b8da;
+  font-size: 12px;
+}
+
+button#create-factory:hover {
+  box-shadow: 1px 2px 1px #666;
+}
+
+button#create-factory::selection{
+  background-color: #5bc0de;
+}
+
+button#update-factory {
+  background-color: #f0ad4e;
+  border-color: #eea236;
+}
+button#update-factory:hover {
+  background-color: #eb9316;
+}
+
+button#delete-factory {
+  background-color: #d9534f;
+  border-color: #d43f3a;
+}
+button#delete-factory:hover {
+  background-color: #c12e2a;
+}
+button.contextual-menu-buttons {
+  width: 100%;
+  padding: 8px;
+  border-radius: 2px;
+  border: none;
+  color: #fff;
+  font-size: 12px;  
+}
+
+#range-error, #node-error, #name-error {
+  margin: 6px 0px 6px 0px;
+  display: none;
+  color: #ff0000;
 }

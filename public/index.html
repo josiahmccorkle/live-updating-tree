@@ -5,42 +5,55 @@
     <link rel="stylesheet" href="/styles/app.css">
     <link rel="stylesheet" href="/styles/context-menu.css">
     <script src="/socket.io/socket.io.js"></script>
-    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
   </head>
   <body>
     <div class="container">
       <ul id="tree">
         <li id="root">
           <span id="root-button"><button id="root-button" title="create factory">ROOT</button></span>
-          <ul id="factories">
-            <li class="factory">Thing</li>
-          </ul>
+          <ul id="factories"></ul>
         </li>
       </ul>
     </div>
 
     <!-- CONTEXT MENU BEGIN-->
     <section class="context-menu">
-      <div id="factory-title">Create a new Factory</div>
+      <div id="create-title" class="factory-title">Create a new Factory</div>
+      <div id="edit-title" class="factory-title">Edit Factory</div>
       <button class="close-button">&#10006;</button>
       <nav id="context-menu">
-        <div class="context-input" id="Factory Name"><input id="factory-name" placeholder="Jeff Goldbloom" type="text"></input></div>
-        <div class="context-input" id="# of Children"><input id="num-children" placeholder="5" type="number"></input></div>
-        <button id="create-factory" type="button" onclick="createFactory($('#factory-name'), $('#num-children'))">Add Factory</button>
+        <ul>
+          <li> 
+            <input class="context-input" id="factory-name" placeholder="Name of Factory" type="text"></input>
+          </li>
+          <li>
+            <input class="context-input" id="num-children" placeholder="Number of Children" type="number" max="15" min="1"></input>
+          </li>        
+          <li>
+            <input class="context-input" id="lower-range" placeholder="Lower Range" type="number"></input>
+          </li>
+          <li>
+            <input class="context-input" id="upper-range" placeholder="Upper Range" type="number"></input>
+          </li>
+        </ul>
+        <div id="validation-message">
+          <div class="error-message" id="range-error">Lower range value must be less than upper range</div>
+          <div class="error-message" id="node-error">No more than 15 nodes</div>
+          <div class="error-message" id="name-error">Alpha numeric characters only</div>
+          <div class="error-message" id="incomplete">All fields must be completed</div>
+        </div>
+        <input type="hidden" id="node-id"></input>
+        <button class="contextual-menu-buttons" id="create-factory" type="button" >Add Factory</button>
+        <div id="edit-buttons">
+          <button class="contextual-menu-buttons" id="update-factory" type="button" >Update Factory</button>
+        <div id="divider"></div>
+          <div>
+            <button class="contextual-menu-buttons" id="delete-factory" type="button" >Delete Factory</button>
+          </div>
+        </div>
       </nav>
     </section>
-
-    <section class="factory-context-menu">
-      <div id="factory-title">Josiah</div>
-      <button class="close-button">&#10006;</button>
-      <nav id="context-menu">
-        <div class="context-input" id="Factory Name"><input id="factory-name" placeholder="Jeff Goldbloom" type="text"></input></div>
-        <div class="context-input" id="# of Children"><input id="num-children" placeholder="5" type="number"></input></div>
-        <button id="create-factory" type="button" onclick="createFactory($('#factory-name'), $('#num-children'))">Add Factory</button>
-      </nav>
-    </section>    
     <!-- CONTEXT MENU END -->
-
-    <script src="/js/main.js"></script>
+    <script src="/bundle.js"></script>
   </body>
 </html>
