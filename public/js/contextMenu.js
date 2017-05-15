@@ -12,10 +12,17 @@ const ContextMenu = (() => {
   let menuPositionX;
   let menuPositionY;
 
+  /*
+    initialize context menu
+  */
   const initContextMenu = () => {
     clickListener();
   }
 
+  /*
+    open context menu
+    fill input fields with data from node when updating.
+  */
   const toggleMenuOn = (e, menu) => {
     if ( menuState !== 1 ) {
       menuState = 1;
@@ -35,6 +42,9 @@ const ContextMenu = (() => {
     } 
   }
 
+  /*
+    close context menu
+  */
   const toggleMenuOff = () => {
     if ( menuState !== 0 ) {
       menuState = 0;
@@ -59,6 +69,9 @@ const ContextMenu = (() => {
     });
   }
 
+  /*
+    grab the position of the menu
+  */
   const getPosition = (e) => {
     let xPosition = 0;
     let yPosition = 0;
@@ -80,6 +93,9 @@ const ContextMenu = (() => {
     }
   }
 
+  /*
+    position context menu to orient around mouse click
+  */
   const positionMenu = (e, menu) => {
     menuPosition = getPosition(e);
     menuPositionX = menuPosition.x + "px";
@@ -88,10 +104,16 @@ const ContextMenu = (() => {
     menu.css('top', menuPositionY);
   }
 
+  /*
+    register close button event and close menu when its triggered
+  */
   closeButton.click((e) => {
     toggleMenuOff();
   });
 
+  /*
+    fill input fields with node data
+  */
   const fillFormForEditing = (target) => {
     let siblings = $(target).siblings();
     let id = target.parentElement.attributes['id'].value;
@@ -102,18 +124,36 @@ const ContextMenu = (() => {
     upperRange.val(siblings[0].attributes["upper-range"].value);
   }
 
+  /*
+    show error when user tries to enter more than 15 nodes.
+  */
   const showNodeError = () => {
     nodeError.show();
   };
   
+  /*
+    show error when the name has special characters.
+  */
   const showNameError = () => {
     nameError.show();
   }
-
+  /*
+    show an error when the lower range is higher 
+    than the higher range.
+  */
   const showRangeError = () => {
     rangeError.show();
   }
+  /*
+    show an error when the user hasn't entered all input fields.
+  */
+  const showIncompleteError = () => {
+    incomplete.show();
+  }
 
+  /*
+    Remove all errors from the context menu.
+  */
   const resetErrors = () => {
     incomplete.hide();
     nodeError.hide();
@@ -126,7 +166,8 @@ const ContextMenu = (() => {
     toggleMenuOff:toggleMenuOff,
     showNameError:showNameError,
     showRangeError:showRangeError,
-    showNodeError:showNodeError
+    showNodeError:showNodeError,
+    showIncompleteError:showIncompleteError
   };
 })();
  

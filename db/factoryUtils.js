@@ -1,6 +1,11 @@
-let formatChildNodes = (factory) => {
+"use strict";
+/*
+  create child nodes from generated numbers
+  @param factory
+*/
+const formatChildNodes = (factory) => {
   let nodeArray = [];
-  for (i = 0; i < factory.numOfNodes; i++) {
+  for (let i = 0; i < factory.numOfNodes; i++) {
     let min = Math.ceil(factory.lowerRange);
     let max = Math.floor(factory.upperRange);
     nodeArray.push(Math.floor(Math.random() * (max - min + 1)) + min);
@@ -9,7 +14,11 @@ let formatChildNodes = (factory) => {
   return factory;
 };
 
-let sanitize = (val) => {
+/*
+  @param val
+  strip any special chars out of string
+*/
+const sanitize = (val) => {
   if(typeof val === "string"){
     if(val.length > 0){
       return val.replace(/[^\w\s]/gi, '');
@@ -17,11 +26,7 @@ let sanitize = (val) => {
   }
 } 
 
-let isNullOrUndefined = (value) => {
-  return (null === value || typeof value === 'undefined') ? true : false;
-}
 module.exports = {
   formatChildNodes:formatChildNodes,
-  sanitize:sanitize,
-  isNullOrUndefined:isNullOrUndefined
+  sanitize:sanitize
 };

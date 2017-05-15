@@ -1,6 +1,10 @@
 const selector = require('./selectors.js');
 let {name, num, lowerRange, upperRange, nodeID} = selector;  
 const Factory = (() => {
+
+  /*
+    get the factory
+  */
   let getFactory = () => {
     return {
       name: name.val(), 
