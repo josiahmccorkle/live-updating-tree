@@ -4,17 +4,16 @@ const mongoose = require('mongoose'),
       utils = require('../factoryUtils.js');
 
 let FactorySchema = new Schema({
-  name: String,
-  numOfNodes: Number,
-  lowerRange: Number,
-  upperRange: Number,
+  name: {type: String},
+  numOfNodes: {type: Number, min: 1, max:15},
+  lowerRange: {type: Number, min: 1},
+  upperRange: {type: Number, min: 1},
   id: Number,
   childNodes: Array 
 });
 
 /*
   pre function for the save call to mongo
-  
   @param next
 */
 FactorySchema.pre('save', function(next) {

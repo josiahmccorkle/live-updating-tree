@@ -29,7 +29,7 @@ db.once('open', function() {
   creates a new document in the DB
   @param factory
 */
-const createFactory = (factory)=>{ 
+const createFactory = (factory) => { 
   let newFactory = new Factory({
     name: factory.name,
     numOfNodes: parseInt(factory.numOfNodes),
@@ -52,6 +52,10 @@ let deleteFactory = (id) => {
     return getAllFactories();
   });
 };
+
+const validator = (val) => {
+  return val.length > 0; 
+}
 
 /*
   Updates a document in the db and the returns all documents

@@ -26,6 +26,7 @@ const sanitize = (val) => {
   }
 } 
 
+
 module.exports = {
   formatChildNodes:formatChildNodes,
   sanitize:sanitize

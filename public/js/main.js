@@ -112,7 +112,7 @@ const validateUpdatedFactory = ((factory, target) => {
     ContextMenu.showNameError();
     return false;
   } 
-  if (nodes && nodes > 15) {
+  if (nodes && (nodes > 15 || nodes < 1)) {
     ContextMenu.showNodeError();
     return false;      
   }
@@ -144,7 +144,10 @@ const prepareNumbers = (number) => {
   @param number
 */
 const evaluateNameString = (name) => {
-  return name.match(/[^A-Za-z0-9\-_ ]/);
+   if(name.match(/[^A-Za-z- ]/) || name.length > 30){
+     return true;
+   }
+   return false;
 }
 
 /*
