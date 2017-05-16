@@ -122,7 +122,7 @@ button.contextual-menu-buttons {
   font-size: 12px;  
 }
 
-#range-error, #node-error, #name-error {
+#range-error, #node-error, #name-error, #incomplete {
   margin: 6px 0px 6px 0px;
   display: none;
   color: #ff0000;

@@ -8,11 +8,22 @@ const Factory = (() => {
   let getFactory = () => {
     return {
       name: name.val(), 
-      numOfNodes: num.val(),
-      lowerRange: lowerRange.val(),
-      upperRange : upperRange.val()
+      numOfNodes: prepareNumbers(num.val()),
+      lowerRange: prepareNumbers(lowerRange.val()),
+      upperRange: prepareNumbers(upperRange.val())
     }  
   }
+
+  /*
+    Helper function that converts strings to numbers 
+    to be validated before submission.
+    Returns the converted value.
+    @param number
+  */
+  const prepareNumbers = (number) => {
+    return number ? parseInt(number) : number;
+  };
+
   return {
     getFactory:getFactory
   }

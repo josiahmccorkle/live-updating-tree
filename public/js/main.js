@@ -52,6 +52,7 @@ let updateFactory = (target) => {
       }
     }
   }
+  
   let valid = validateUpdatedFactory(factory, target);
   if (valid) {
     factory['id'] = nodeID.val();
@@ -99,7 +100,6 @@ const validateUpdatedFactory = ((factory, target) => {
   let nodes = prepareNumbers(factory.numOfNodes);
   let thisNode = $(target).siblings()[0];
   let name = factory.name;
-
   if (lower) {
     if (upper) {
       if (lower > upper || lower < 1 || upper < 1) {
