@@ -66,15 +66,18 @@ let updateFactory = (target) => {
 */
 const validateCreateFactory = ((factory) => {
   let {lowerRange, upperRange, name, numOfNodes} = factory;
+  lowerRange = prepareNumbers(lowerRange);
+  upperRange = prepareNumbers(upperRange);
+  numOfNodes = prepareNumbers(numOfNodes);
   if(!lowerRange || !upperRange || !name || !numOfNodes) {
       ContextMenu.showIncompleteError();
       return false;
   }
-  if(numOfNodes && numOfNodes > 15){
+  if(numOfNodes && (numOfNodes > 15 || numOfNodes < 1)){
     ContextMenu.showNodeError();
     return false;
   }
-  if(parseInt(lowerRange) > parseInt(upperRange)){
+  if(lowerRange < 1 || upperRange < 1 || (lowerRange > upperRange)){
     ContextMenu.showRangeError();
     return false;
   }
@@ -99,15 +102,19 @@ const validateUpdatedFactory = ((factory, target) => {
 
   if (lower) {
     if (upper) {
-      if (lower > upper) {
+      if (lower > upper || lower < 1 || upper < 1) {
         ContextMenu.showRangeError();
         return false;
       } 
-    } else if (lower > thisNode.attributes["upper-range"].value) {
+    } else if (lower > thisNode.attributes["upper-range"].value || lower < 5 || upper < 1) {
       ContextMenu.showRangeError();
       return false;        
     }
+  } else if(lower < 1 || upper < 1){ //zero is falsy. this catches that. Yes, I could use a null check instead.
+    ContextMenu.showRangeError();
+    return false;
   }
+
   if (name && evaluateNameString(name)) {
     ContextMenu.showNameError();
     return false;
