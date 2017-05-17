@@ -43,7 +43,7 @@ const validation = (factory) => {
   log.info('name: ' + name + ": " + typeof name);
   log.info('lower: ' + numOfNodes + ": " + typeof numOfNodes);
   if(!nodeRangeValidation(lower, upper) || !childValidation(numOfNodes) || !nameValidation(name)){
-    console.log('inside validation')
+    log.info('inside validation')
     return false;
   }
   return true;
@@ -57,7 +57,7 @@ const validation = (factory) => {
 const nodeRangeValidation = (lower, upper) => {
   log.info('lower: ' + lower + ": " + typeof lower);
   log.info('lower: ' + upper + ": " + typeof upper);
-  if ( !isNullOrUndefined(lower) && !isNullOrUndefined(upper)) {
+  if ( true ) {
     if ( lower > upper || lower < 1 || upper < 1 || lower > 999999 || upper > 999999 ) {
       return false;
     } 
