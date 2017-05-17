@@ -38,6 +38,7 @@ const validation = (factory) => {
   let upper = prepareNumbers(factory.upperRange);
   let nodes = prepareNumbers(factory.numOfNodes);
   if(!nodeRangeValidation(lower, upper) || !childValidation(numOfNodes) || !nameValidation(name)){
+    console.log('inside validation')
     return false;
   }
   return true;
@@ -49,6 +50,8 @@ const validation = (factory) => {
   @param upper
 */
 const nodeRangeValidation = (lower, upper) => {
+  console.log('lower: ' + lower + ": " + typeof lower);
+  console.log('lower: ' + upper + ": " + typeof upper);
   if ( !isNullOrUndefined(lower) && !isNullOrUndefined(upper)) {
     if ( lower > upper || lower < 1 || upper < 1 || lower > 999999 || upper > 999999 ) {
       return false;
