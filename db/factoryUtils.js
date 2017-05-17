@@ -1,5 +1,5 @@
 "use strict";
-const log = require('simple-node-logger').createSimpleLogger('output.log');
+const log = require('simple-node-logger').createSimpleFileLogger('project.log');
 /*
   create child nodes from generated numbers
   @param factory
@@ -41,9 +41,9 @@ const validation = (factory) => {
   log.info('lower: ' + lower + ": " + typeof lower);
   log.info('upper: ' + upper + ": " + typeof upper);
   log.info('name: ' + name + ": " + typeof name);
-  log.info('lower: ' + numOfNodes + ": " + typeof numOfNodes);
-  if(!nodeRangeValidation(lower, upper) || !childValidation(numOfNodes) || !nameValidation(name)){
-    log.info('inside validation')
+  log.info('lower: ' + nodes + ": " + typeof nodes);
+  if(!nodeRangeValidation(lower, upper) || !childValidation(nodes) || !nameValidation(name)){
+    console.log('inside validation')
     return false;
   }
   return true;
@@ -57,13 +57,17 @@ const validation = (factory) => {
 const nodeRangeValidation = (lower, upper) => {
   log.info('lower: ' + lower + ": " + typeof lower);
   log.info('lower: ' + upper + ": " + typeof upper);
-  if ( true ) {
+  if ( !isNullOrUndefined(lower) && !isNullOrUndefined(upper)) {
+    log.info('inside null check');
     if ( lower > upper || lower < 1 || upper < 1 || lower > 999999 || upper > 999999 ) {
+      log.info('lower or upper is failed'+ lower + ": " + upper);
       return false;
     } 
   } else {
+    log.info('was not defined');
     return false;
   }
+  log.info('returns true');
   return true;
 }
 
