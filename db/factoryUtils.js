@@ -38,6 +38,10 @@ const validation = (factory) => {
   let lower = prepareNumbers(factory.lowerRange);
   let upper = prepareNumbers(factory.upperRange);
   let nodes = prepareNumbers(factory.numOfNodes);
+  log.info('lower: ' + lower + ": " + typeof lower);
+  log.info('upper: ' + upper + ": " + typeof upper);
+  log.info('name: ' + name + ": " + typeof name);
+  log.info('lower: ' + numOfNodes + ": " + typeof numOfNodes);
   if(!nodeRangeValidation(lower, upper) || !childValidation(numOfNodes) || !nameValidation(name)){
     console.log('inside validation')
     return false;
