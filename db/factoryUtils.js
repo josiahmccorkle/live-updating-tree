@@ -1,4 +1,5 @@
 "use strict";
+const log = require('simple-node-logger').createSimpleLogger('output.log');
 /*
   create child nodes from generated numbers
   @param factory
@@ -50,8 +51,8 @@ const validation = (factory) => {
   @param upper
 */
 const nodeRangeValidation = (lower, upper) => {
-  console.log('lower: ' + lower + ": " + typeof lower);
-  console.log('lower: ' + upper + ": " + typeof upper);
+  log.info('lower: ' + lower + ": " + typeof lower);
+  log.info('lower: ' + upper + ": " + typeof upper);
   if ( !isNullOrUndefined(lower) && !isNullOrUndefined(upper)) {
     if ( lower > upper || lower < 1 || upper < 1 || lower > 999999 || upper > 999999 ) {
       return false;
