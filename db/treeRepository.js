@@ -17,7 +17,6 @@ const db = mongoose.connection,
 mongoose.Promise = require('bluebird');
 
 let getAll = {};
-let any = {};
 
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
@@ -29,18 +28,25 @@ db.once('open', function() {
   creates a new document in the DB
   @param factory
 */
-const createFactory = (factory) => { 
-  let newFactory = new Factory({
-    name: factory.name,
-    numOfNodes: parseInt(factory.numOfNodes),
-    lowerRange: parseInt(factory.lowerRange),
-    upperRange: parseInt(factory.upperRange)
-  });
-  
-  let saveFactory = newFactory.save();
-  return saveFactory.then((doc) => {
-    return getAllFactories();
-  });
+const createFactory = (factory) => {
+  let valid = utils.validation(factory);
+  if(valid) {
+    let newFactory = new Factory({
+      name: factory.name,
+      numOfNodes: parseInt(factory.numOfNodes),
+      lowerRange: parseInt(factory.lowerRange),
+      upperRange: parseInt(factory.upperRange)
+    });
+    
+    let saveFactory = newFactory.save();
+    return saveFactory.then((doc) => {
+      return getAllFactories();
+    });
+  } else {
+    return Promise.resolve().then(() => {
+      return getAllFactories();
+    });    
+  }
 }
 
 /*
@@ -53,31 +59,34 @@ let deleteFactory = (id) => {
   });
 };
 
-const validator = (val) => {
-  return val.length > 0; 
-}
-
 /*
   Updates a document in the db and the returns all documents
   @param factory
 */
 let updateFactory = (factory) => {
   let {name, upperRange, lowerRange, numOfNodes, id} = factory;
-  delete factory['id'];
-  if(upperRange || lowerRange || numOfNodes) {
-    return Factory.findByIdAndUpdate(id, factory, {new: true}).then((doc, err) => {
-      let {_doc} = doc;
-      let {_id} = _doc;
-      _doc['updateChildNodes'] = true;
-      return Factory.findOneAndUpdate({"_id": _id}, _doc, {new: true}).then(() => {
+  let valid = utils.validation(factory);
+  if(valid) {
+    delete factory['id'];
+    if(upperRange || lowerRange || numOfNodes) {
+      return Factory.findByIdAndUpdate(id, factory, {new: true}).then((doc, err) => {
+        let {_doc} = doc;
+        let {_id} = _doc;
+        _doc['updateChildNodes'] = true;
+        return Factory.findOneAndUpdate({"_id": _id}, _doc, {new: true}).then(() => {
+          return getAllFactories();
+        });
+      });
+    } else {
+      return Factory.findOneAndUpdate({"_id": id}, factory, {new: true}).then(() => {
         return getAllFactories();
       });
-    });
+    }
   } else {
-    return Factory.findOneAndUpdate({"_id": id}, factory, {new: true}).then(() => {
+    return Promise.resolve().then(() => {
       return getAllFactories();
     });
-  }
+  }  
 };
 
 /*

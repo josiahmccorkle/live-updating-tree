@@ -47,7 +47,7 @@ let updateFactory = (target) => {
   let factory  = Factory.getFactory();
   for (var property in factory) {
     if (factory.hasOwnProperty(property)) {
-      if(factory[property] === ""){
+      if (factory[property] === "") {
         delete factory[property];
       }
     }
@@ -70,19 +70,19 @@ const validateCreateFactory = ((factory) => {
   lowerRange = prepareNumbers(lowerRange);
   upperRange = prepareNumbers(upperRange);
   numOfNodes = prepareNumbers(numOfNodes);
-  if(!lowerRange || !upperRange || !name || !numOfNodes) {
-      ContextMenu.showIncompleteError();
-      return false;
+  if (!lowerRange || !upperRange || !name || !numOfNodes) {
+    ContextMenu.showIncompleteError();
+    return false;
   }
-  if(numOfNodes && (numOfNodes > 15 || numOfNodes < 1)){
+  if (numOfNodes && (numOfNodes > 15 || numOfNodes < 1)) {
     ContextMenu.showNodeError();
     return false;
   }
-  if(lowerRange < 1 || upperRange < 1 || (lowerRange > upperRange)){
+  if (lowerRange < 1 || upperRange < 1 || (lowerRange > upperRange)) {
     ContextMenu.showRangeError();
     return false;
   }
-  if(name && evaluateNameString(name)) {
+  if (name && evaluateNameString(name)) {
     ContextMenu.showNameError();
     return false;
   }
@@ -99,6 +99,7 @@ const validateUpdatedFactory = ((factory, target) => {
   let upper = prepareNumbers(factory.upperRange);
   let nodes = prepareNumbers(factory.numOfNodes);
   let thisNode = $(target).siblings()[0];
+  
   let name = factory.name;
   if (lower) {
     if (upper) {
@@ -106,16 +107,15 @@ const validateUpdatedFactory = ((factory, target) => {
         ContextMenu.showRangeError();
         return false;
       } 
-    } else if (lower > thisNode.attributes["upper-range"].value || lower < 5 || upper < 1) {
+    } else if (lower > thisNode.attributes["upper-range"].value || lower < 1 || upper < 1 || lower > 999999 || upper > 999999) {
       ContextMenu.showRangeError();
       return false;        
     }
-  } else if(lower < 1 || upper < 1){ //zero is falsy. this catches that. Yes, I could use a null check instead.
+  } else if (lower < 1 || upper < 1) { //zero is falsy. this catches that. Yes, I could use a null check instead.
     ContextMenu.showRangeError();
     return false;
   }
-
-  if (name && evaluateNameString(name)) {
+  if (evaluateNameString(name)) {
     ContextMenu.showNameError();
     return false;
   } 
@@ -151,10 +151,10 @@ const prepareNumbers = (number) => {
   @param number
 */
 const evaluateNameString = (name) => {
-   if(name.match(/[^A-Za-z- ]/) || name.length > 30){
-     return true;
-   }
-   return false;
+  if(typeof name === 'undefined' || name.match(/[^A-Za-z- ]/) || name.length > 30 || name.length < 1){
+    return true;
+  }
+  return false;
 }
 
 /*
