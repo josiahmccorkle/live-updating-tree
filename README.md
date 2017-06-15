@@ -1,5 +1,5 @@
 # live-updating-tree
-### A live-updating tree code challenge for Passport
+## A live updating tree that can create nodes and have children on those nodes. A live version is at josiahmccorkle.com:3000
 
 To run this app:
 
