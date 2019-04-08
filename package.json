@@ -6,7 +6,9 @@
   "scripts": {
     "babel-version": "babel --version",
     "start": "babel-node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "repository": {
     "type": "git",
@@ -29,12 +31,14 @@
     "mongoose": "^4.9.8",
     "path": "^0.12.7",
     "simple-node-logger": "^0.93.24",
-    "socket.io": "^1.7.3",
-    "webpack-dev-middleware": "^1.10.2"
+    "socket.io": "^2.0.2",
+    "webpack-dev-middleware": "^1.10.2",
+    "snyk": "^1.147.4"
   },
   "devDependencies": {
     "babel-preset-es2015": "^6.24.1",
     "handlebars-loader": "^1.5.0",
     "webpack": "^2.5.1"
-  }
+  },
+  "snyk": true
 }
