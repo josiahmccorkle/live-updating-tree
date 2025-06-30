@@ -29,7 +29,7 @@
     "mongoose": "^4.9.8",
     "path": "^0.12.7",
     "simple-node-logger": "^0.93.24",
-    "socket.io": "^1.7.3",
+    "socket.io": "^4.8.0",
     "webpack-dev-middleware": "^1.10.2"
   },
   "devDependencies": {
